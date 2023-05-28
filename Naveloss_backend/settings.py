@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
-
+import dj_database_url
 import user
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-jcb)rx052_0ri-82i5hde87#l$vbp#f7)fu=meq4ai!(@t5y7b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["10.241.26.6", '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -89,16 +89,13 @@ WSGI_APPLICATION = 'Naveloss_backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+DATABASE_URL = "postgresql://postgres:7MzO9eAc0yXxcpisCRux@containers-us-west-78.railway.app:5735/railway"
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'NavelossDB',
-        'USER': 'postgres',
-        'PASSWORD': 'litl123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432'
-    }
+    "default": dj_database_url.config(default=DATABASE_URL, conn_max_age=1800),
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

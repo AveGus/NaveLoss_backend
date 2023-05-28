@@ -1,1 +1,1 @@
-gunicorn 'Naveloss_backend.wsgi'
+web: python manage.py migrate && gunicorn Naveloss_backend.wsgi
