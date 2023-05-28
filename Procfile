@@ -1,0 +1,1 @@
+gunicorn 'Naveloss_backend.wsgi'
